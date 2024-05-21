@@ -27,4 +27,8 @@ public class BookService {
     }
 
 
+    public Book addBook(Book book){
+        books.add(book);
+        return book;
+    }
 }

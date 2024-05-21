@@ -23,6 +23,10 @@ public class BookController {
         return book;
     }
 
-
+    @PostMapping("/books")
+    public Book addBook(@RequestBody Book book ){
+        Book book1 = bookService.addBook(book);
+        return book1;
+    }
     
 }
