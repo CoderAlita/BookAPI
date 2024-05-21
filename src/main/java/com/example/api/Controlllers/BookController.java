@@ -1,16 +1,28 @@
 package com.example.api.Controlllers;
 
-import org.springframework.web.bind.annotation.RestController;
+import com.example.api.Entity.Book;
+import com.example.api.Service.BookService;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.List;
 
 @RestController
 public class BookController {
 
-    @GetMapping("/book")
-
-    public String getBoks() {
-        return "Book details";
+    BookService bookService=new BookService();
+    @GetMapping("/books")
+    public List<Book> getBooks() {
+        List<Book> list =bookService.getAllBooks();
+        return list;
     }
+
+    @GetMapping("/books/{id}")
+    public Book getBookById(@PathVariable("id") int id){
+        Book book=bookService.getBookById(id);
+        return book;
+    }
+
+
     
 }
