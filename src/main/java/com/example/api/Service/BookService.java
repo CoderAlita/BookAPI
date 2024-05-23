@@ -5,7 +5,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class BookService {
@@ -30,5 +32,10 @@ public class BookService {
     public Book addBook(Book book){
         books.add(book);
         return book;
+    }
+
+    public void deleteBook(int id){
+        books =books.stream().filter(e -> e.getId() != id).collect(Collectors.toList());
+
     }
 }
