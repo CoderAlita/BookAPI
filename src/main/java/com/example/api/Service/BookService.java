@@ -24,7 +24,12 @@ public class BookService {
     }
 
     public Book getBookById(int id) {
-        Book book =books.stream().filter(e -> e.getId() == id).findFirst().get();
+        Book book=null;
+        try{
+        book =books.stream().filter(e -> e.getId() == id).findFirst().get();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return book;
     }
 
@@ -35,6 +40,7 @@ public class BookService {
     }
 
     public void deleteBook(int id){
+
         books =books.stream().filter(e -> e.getId() != id).collect(Collectors.toList());
     }
 
